@@ -1,0 +1,12 @@
+{
+    "name": "snuzi/engineering-blogs-aggregator",
+    "description": "Engineering blogs aggregator",
+    "type": "project",
+    "authors": [
+        {
+            "name": "snuzi",
+            "email": "sabrinuzi@gmail.com"
+        }
+    ],
+    "require": {}
+}
