@@ -18,5 +18,6 @@ echo "Starting container $projectName "
 docker run -d \
 --env-file ${PWD}/.env \
 --volume ${PWD}/src/:/var/eng-blogs \
+--volume ${PWD}/vendor/:/var/eng-blogs/vendor/ \
 --name ${projectName} \
 ${projectName}

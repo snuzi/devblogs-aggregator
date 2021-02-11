@@ -8,5 +8,10 @@
             "email": "sabrinuzi@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "symfony/console": "^5.2"
+    },
+    "autoload": {
+        "psr-4": { "EngBlogs\\": "src/" }
+    }
 }

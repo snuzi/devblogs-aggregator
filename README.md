@@ -10,3 +10,6 @@ Copy `.env.example` to `.env`
 
 ### Run image
 `./run-dev.sh`
+
+### Run a command
+`php bin/app rss:crawl`
