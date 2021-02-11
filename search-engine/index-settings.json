@@ -1,0 +1,31 @@
+{
+    "rankingRules": [
+        "typo",
+        "words",
+        "proximity",
+        "attribute",
+        "wordsPosition",
+        "exactness",
+        "desc(publish_date)"
+    ],
+    "distinctAttribute": "post_id",
+    "searchableAttributes": [
+        "title",
+        "blog_title"
+    ],
+    "displayedAttributes": [
+        "post_id",
+        "title",
+        "blog_title",
+        "blog_url",
+        "blog_rss",
+        "categories",
+        "publish_date"
+    ],
+    "stopWords": [
+        "the",
+        "a",
+        "an",
+        "to"
+    ]
+}
