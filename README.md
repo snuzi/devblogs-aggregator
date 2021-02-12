@@ -5,6 +5,11 @@ Engineering blogs aggregator
 
 Copy `.env.example` to `.env`
 
+### Run MeiliSearch
+```
+$ docker run -it --rm -p 7700:7700 -v $(pwd)/data.ms:/data.ms getmeili/meilisearch
+```
+
 ### Build image
 `./run-dev.sh build`
 

@@ -9,9 +9,25 @@
         }
     ],
     "require": {
-        "symfony/console": "^5.2"
+        "symfony/console": "^5.2",
+        "meilisearch/meilisearch-php": "^0.16.0",
+        "snuzi/awesome-blogs": "*"
     },
     "autoload": {
         "psr-4": { "EngBlogs\\": "src/" }
-    }
+    },
+    "repositories":[
+        {              
+            "type": "package",
+            "package": {
+              "name": "snuzi/awesome-blogs",
+              "version": "1.0.0",
+              "source": {
+                "url": "git@github.com:snuzi/awesome-blogs.git",
+                "type": "git",
+                "reference": "main"
+              }
+            }
+        }
+    ]
 }
