@@ -11,7 +11,8 @@
     "require": {
         "symfony/console": "^5.2",
         "meilisearch/meilisearch-php": "^0.16.0",
-        "snuzi/awesome-blogs": "*"
+        "snuzi/awesome-blogs": "*",
+        "vlucas/phpdotenv": "^5.3"
     },
     "autoload": {
         "psr-4": { "EngBlogs\\": "src/" }

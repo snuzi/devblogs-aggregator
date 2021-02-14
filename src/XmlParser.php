@@ -29,7 +29,7 @@ class XmlParser {
         }
     }
 
-    function getPosts(): array {
+    public function getPosts(): array {
         
     }
 }

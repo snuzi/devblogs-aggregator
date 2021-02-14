@@ -50,4 +50,8 @@ class Post {
     public function getPublishTimestamp(): int {
         return strtotime((string) $this->publishDate);
     }
+
+    public function getId(): string {
+        return md5($this->link);
+    }
 }
