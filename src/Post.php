@@ -3,9 +3,12 @@ namespace EngBlogs;
 
 class Post {
     private string $link;
+    private string $title;
     private string $blogName;
     private string $description;
     private string $publishDate;
+    private array $categories;
+    private Blog $blog;
 
     public function setLink(string $link) {
         $this->link = $link;
@@ -17,14 +20,34 @@ class Post {
         return $this->link;
     }
 
-    public function setBlogName(string $blogName) {
-        $this->blogName = $blogName;
-        
+    public function setBlog(Blog $blog) {
+        $this->blog = $blog;
+
         return $this;
     }
 
-    public function getBlogName():string {
-        return $this->blogName;
+    public function getBlog():Blog {
+        return $this->blog;
+    }
+
+    public function setTitle(string $title) {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function getTitle():string {
+        return $this->title;
+    }
+
+    public function setCategories(array $categories) {
+        $this->categories = $categories;
+
+        return $this;
+    }
+
+    public function getCategories():array {
+        return $this->categories;
     }
 
     public function setDescription(string $description) {
@@ -53,5 +76,21 @@ class Post {
 
     public function getId(): string {
         return md5($this->link);
+    }
+
+    public function serialize(): array {
+        return [
+            'id' => $this->getId(),
+            'link' => $this->getLink(),
+            'description' => $this->getDescription(),
+            'categories' => $this->getCategories(),
+            'title' => $this->getTitle(),
+            'publish_timestanp' => $this->getPublishTimestamp(),
+            'publish_date' => $this->getPublishDate(),
+            'update_timestamp' => time(),
+            'blogName' => $this->getBlog() ? $this->getBlog()->getName() : '',
+            'blogId' => $this->getBlog() ? $this->getBlog()->getId() : '',
+            'blog' => $this->getBlog() ? $this->getBlog()->serialize() : [],
+        ];
     }
 }

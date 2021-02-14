@@ -6,21 +6,22 @@
         "attribute",
         "wordsPosition",
         "exactness",
-        "desc(publish_date)"
+        "desc(publish_timestamp)"
     ],
-    "distinctAttribute": "post_id",
+    "distinctAttribute": "id",
     "searchableAttributes": [
         "title",
-        "blog_title"
+        "blogName"
     ],
     "displayedAttributes": [
-        "post_id",
+        "id",
         "title",
-        "blog_title",
-        "blog_url",
-        "blog_rss",
+        "blogName",
+        "description",
+        "blog",
         "categories",
-        "publish_date"
+        "publish_date",
+        "publish_timestamp"
     ],
     "stopWords": [
         "the",

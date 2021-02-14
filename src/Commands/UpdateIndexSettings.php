@@ -2,23 +2,23 @@
 
 namespace EngBlogs\Commands;
 
-use EngBlogs\RssAggregator;
+use EngBlogs\MeiliSearch\MeiliSearch;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class Rss extends Command {
+class UpdateIndexSettings extends Command {
 
     protected function configure() {
-        $this->setName('rss:crawl')
-            ->setDescription('Crawl posts from RSS feeds');
+        $this->setName('db:update-index-settings')
+            ->setDescription('Update index settings');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output) {
-        $rssAggregator = new RssAggregator();
-        $rssAggregator->run();
-        $output->writeln('Crawl completed');
+        $meiliClient = new MeiliSearch(getenv('MEILI_INDEX_NAME'));
+        $meiliClient->updateIndexSettings();
+
+        $output->writeln('Settings updated');
 
         return Command::SUCCESS;
     }

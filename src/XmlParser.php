@@ -1,23 +1,31 @@
 <?php
 namespace EngBlogs;
 
+use SimpleXMLElement;
+
 class XmlParser {
-
     private SimpleXMLElement $simpleXMLElement;
+    private Blog $blog;
 
-    function __construct(SimpleXMLElement $simpleXMLElement) {
+    function __construct(SimpleXMLElement $simpleXMLElement, Blog $blog) {
         $this->simpleXMLElement = $simpleXMLElement;
+        $this->blog = $blog;
     }
 
-    private function parsePostItem(string $xmlItem): Post {
+    private function parsePostItem($xmlItem): Post {
         $title = (string) $xmlItem->title;
-        $categories = (string) $xmlItem->categories;
+        $categories = [];
         $link = (string) $xmlItem->link;
         $pubDate = $xmlItem->pubDate;
+        $description = $xmlItem->description;
 
         $post = new Post();
-        $post->setTitle($title);
-        $post->setLink($link);
+        $post->setTitle($title)
+            ->setLink($link)
+            ->setBlog($this->blog)
+            ->setCategories($categories)
+            ->setDescription($description)
+            ->setPublishDate($pubDate);
 
         return $post;
     }
@@ -25,11 +33,14 @@ class XmlParser {
     private function parseXml(): array {
         $posts = [];
         foreach($this->simpleXMLElement->channel->item as $item){
-            $posts[] = $this->parsePostItem($item);
+            $post = $this->parsePostItem($item);
+            $posts[] = $post->serialize();
         }
+
+        return $posts;
     }
 
     public function getPosts(): array {
-        
+        return $this->parseXml();
     }
 }

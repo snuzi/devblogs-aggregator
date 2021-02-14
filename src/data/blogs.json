@@ -1,9 +1,0 @@
-{
-    "blogs": [
-        {
-            "title": "Facebook",
-            "rssFeed": "https://code.fb.com/feed",
-            "blogUrl": "https://code.facebook.com/posts/"
-        }
-    ]
-}

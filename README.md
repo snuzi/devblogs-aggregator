@@ -7,14 +7,21 @@ Copy `.env.example` to `.env`
 
 ### Run MeiliSearch
 ```
-$ docker run -it --rm -p 7700:7700 -v $(pwd)/data.ms:/data.ms getmeili/meilisearch
+$ docker run -it --rm -p 7700:7700 --network=engineering-blogs --name eng-blogs-meili -v data.ms:/data.ms getmeili/meilisearch
 ```
 
-### Build image
-`./run-dev.sh build`
-
 ### Run image
-`./run-dev.sh`
+`docker-compose up`
 
-### Run a command
-`php bin/app rss:crawl`
+### Run a commands inside the aggregator container
+`docker exec -it eng-blogs-aggregator bash`
+
+#### Create index
+`php src/bin/app db:create-index`
+
+#### Update index settings
+`php src/bin/app db:update-index-settings`
+
+#### Crawl rss feeds
+`php src/bin/app rss:crawl`
+

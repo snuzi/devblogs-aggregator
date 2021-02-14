@@ -1,7 +1,7 @@
 <?php
 namespace EngBlogs;
 
-use EngBlogs\XmlParser;
+use EngBlogs\MeiliSearch\MeiliSearch;
 
 class RssAggregator {
     public function getBlogJsonUrls(): array {
@@ -12,12 +12,20 @@ class RssAggregator {
     }
 
     public function run() {
+        $meiliClient = new MeiliSearch(getenv('MEILI_INDEX_NAME'));
+
         $blogsJson = $this->getBlogJsonUrls();
-        foreach($blogsJson as $blog) {
-            $xml = simplexml_load_file($blog['rssFeed']);
-            $xmlParser = new XmlParser($xml);
+        foreach($blogsJson as $blogJson) {
+            $blog = new Blog();
+            $blog->setName($blogJson['title'])
+                ->setId($blogJson['id'])
+                ->setLink($blogJson['blogUrl'])
+                ->setRssFeed($blogJson['rssFeed']);
+
+            $xml = simplexml_load_file($blog->getRssFeed());
+            $xmlParser = new XmlParser($xml, $blog);
             $posts = $xmlParser->getPosts();
-            // Parse blog
+            $meiliClient->addDocuments($posts);
         }
     }
 }
