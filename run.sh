@@ -24,4 +24,4 @@ docker run -d \
     ${projectName}
 
 # Apply cron jobs, this is for prod mode only, in dev mode run commands manually
-# docker exec -d ${projectName} cron -f
+docker exec -d ${projectName} cron -f
