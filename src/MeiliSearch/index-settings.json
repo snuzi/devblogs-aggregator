@@ -21,7 +21,8 @@
         "blog",
         "categories",
         "publish_date",
-        "publish_timestamp"
+        "publish_timestamp",
+        "image"
     ],
     "stopWords": [
         "the",

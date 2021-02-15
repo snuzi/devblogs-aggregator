@@ -6,10 +6,13 @@ use SimpleXMLElement;
 class XmlParser {
     private SimpleXMLElement $simpleXMLElement;
     private Blog $blog;
+    private $scraper;
 
     function __construct(SimpleXMLElement $simpleXMLElement, Blog $blog) {
         $this->simpleXMLElement = $simpleXMLElement;
         $this->blog = $blog;
+
+        $this->scraper = new Scraper();
     }
 
     private function parsePostItem($xmlItem): Post {
@@ -26,6 +29,9 @@ class XmlParser {
             ->setCategories($categories)
             ->setDescription($description)
             ->setPublishDate($pubDate);
+
+        $scrapedPost = $this->scraper->scrapePage($link);
+        $post->setImage($scrapedPost['image']);
 
         return $post;
     }

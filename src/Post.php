@@ -8,6 +8,7 @@ class Post {
     private string $description;
     private string $publishDate;
     private array $categories;
+    private string $image;
     private Blog $blog;
 
     public function setLink(string $link) {
@@ -18,6 +19,16 @@ class Post {
 
     public function getLink():string {
         return $this->link;
+    }
+
+    public function setImage(string $image) {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getImage():string {
+        return $this->image;
     }
 
     public function setBlog(Blog $blog) {
@@ -91,6 +102,7 @@ class Post {
             'blogName' => $this->getBlog() ? $this->getBlog()->getName() : '',
             'blogId' => $this->getBlog() ? $this->getBlog()->getId() : '',
             'blog' => $this->getBlog() ? $this->getBlog()->serialize() : [],
+            'image' => $this->getImage()
         ];
     }
 }
