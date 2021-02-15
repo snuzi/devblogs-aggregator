@@ -20,7 +20,7 @@ class XmlParser {
         $categories = [];
         $link = (string) $xmlItem->link;
         $pubDate = $xmlItem->pubDate;
-        $description = $xmlItem->description;
+        $description = strip_tags($xmlItem->description);
 
         $post = new Post();
         $post->setTitle($title)
