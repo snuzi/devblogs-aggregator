@@ -27,7 +27,7 @@
               "name": "snuzi/awesome-blogs",
               "version": "1.0.0",
               "source": {
-                "url": "git@github.com:snuzi/awesome-blogs.git",
+                "url": "https://github.com/snuzi/awesome-blogs.git",
                 "type": "git",
                 "reference": "main"
               }

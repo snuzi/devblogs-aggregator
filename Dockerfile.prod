@@ -1,0 +1,14 @@
+FROM php:7.4-fpm
+
+RUN apt update && apt install -y cron git
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+WORKDIR /var/eng-blogs
+
+COPY docker/cronjobs /etc/crontabs/root
+
+ADD src/ /var/eng-blogs
+ADD ./composer.json /var/eng-blogs/
+
+RUN composer install --prefer-dist --optimize-autoloader  && composer clear-cache
