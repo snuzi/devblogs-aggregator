@@ -1,0 +1,20 @@
+name : CI
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: mr-smithers-excellent/docker-build-push@v3
+        name: Build & push Docker image
+        with:
+          image : snuzi/engineering-blogs-aggregator
+          tag: main
+          registry: docker.io
+          dockerfile: Dockerfile.prod
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
