@@ -8,7 +8,7 @@ WORKDIR /var/eng-blogs
 
 COPY docker/cronjobs /etc/crontabs/root
 
-ADD src/ /var/eng-blogs
+ADD src/ /var/eng-blogs/src/
 ADD ./composer.json /var/eng-blogs/
 
 RUN composer install --prefer-dist --optimize-autoloader  && composer clear-cache
