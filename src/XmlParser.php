@@ -22,12 +22,17 @@ class XmlParser {
         $pubDate = $xmlItem->pubDate;
         $description = strip_tags($xmlItem->description);
 
+        if (!$description) {
+            $content = $xmlItem->children("content", true);
+            $description = (string) $content->encoded;
+        }
+
         $post = new Post();
         $post->setTitle($title)
             ->setLink($link)
             ->setBlog($this->blog)
             ->setCategories($categories)
-            ->setDescription($description)
+            ->setDescription(strip_tags($description))
             ->setPublishDate($pubDate);
 
         $scrapedPost = $this->scraper->scrapePage($link);

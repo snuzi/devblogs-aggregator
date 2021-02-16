@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9377690fba06f5b145b0f1b93718f6f9",
+    "content-hash": "d58ab5296acab5c8099fa532e54364a6",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -1233,7 +1233,7 @@
             "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "git@github.com:snuzi/awesome-blogs.git",
+                "url": "https://github.com/snuzi/awesome-blogs.git",
                 "reference": "main"
             },
             "type": "library"
