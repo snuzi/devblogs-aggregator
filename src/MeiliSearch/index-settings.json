@@ -22,7 +22,8 @@
         "categories",
         "publish_date",
         "publish_timestamp",
-        "image"
+        "image",
+        "link"
     ],
     "attributesForFaceting": [
         "blogName"
