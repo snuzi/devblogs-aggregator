@@ -17,5 +17,6 @@ RUN composer install --prefer-dist --optimize-autoloader  && composer clear-cach
 RUN touch /var/log/cron.log
 
 # Setup cron job
-RUN (crontab -l ; echo "0 */3 * * * php /var/eng-blogs/src/bin/app rss:crawl") | crontab
+# RUN (crontab -l ; echo "0 */3 * * * php /var/eng-blogs/src/bin/app rss:crawl") | crontab
+RUN (crontab -l ; echo "* * * * * echo "Hello world" >> /var/log/cron.log") | crontab
 
