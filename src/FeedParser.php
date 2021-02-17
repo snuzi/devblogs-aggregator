@@ -1,9 +1,7 @@
 <?php
 namespace EngBlogs;
 
-use SimpleXMLElement;
-
-class XmlParser {
+class FeedParser {
     private $feed;
     private Blog $blog;
     private $scraper;
@@ -16,14 +14,6 @@ class XmlParser {
     }
 
     private function parsePostItem($feedEntry): Post {
-        $edata = [
-            'title'        => $feedEntry->getTitle(),
-            'description'  => $feedEntry->getDescription(),
-            'dateModified' => $feedEntry->getDateModified(),
-            'authors'      => $feedEntry->getAuthors(),
-            'link'         => $feedEntry->getLink(),
-            'content'      => $feedEntry->getContent(),
-        ];
         $title = $feedEntry->getTitle();
         $categories = [];
         $link = $feedEntry->getLink();
@@ -48,7 +38,7 @@ class XmlParser {
         return $post;
     }
 
-    private function parseXml(): array {
+    private function parseFeed(): array {
         $posts = [];
         foreach ($this->feed as $entry) {
             $post = $this->parsePostItem($entry);
@@ -59,6 +49,6 @@ class XmlParser {
     }
 
     public function getPosts(): array {
-        return $this->parseXml();
+        return $this->parseFeed();
     }
 }

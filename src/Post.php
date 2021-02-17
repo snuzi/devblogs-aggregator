@@ -82,7 +82,7 @@ class Post {
     }
 
     public function getPublishTimestamp(): int {
-        return strtotime((string) $this->publishDate);
+        return strtotime($this->publishDate);
     }
 
     public function getId(): string {
@@ -96,7 +96,7 @@ class Post {
             'description' => $this->getDescription(),
             'categories' => $this->getCategories(),
             'title' => $this->getTitle(),
-            'publish_timestanp' => $this->getPublishTimestamp(),
+            'publish_timestamp' => $this->getPublishTimestamp(),
             'publish_date' => $this->getPublishDate(),
             'update_timestamp' => time(),
             'blogName' => $this->getBlog() ? $this->getBlog()->getName() : '',
