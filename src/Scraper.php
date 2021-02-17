@@ -18,8 +18,12 @@ class Scraper {
 
     public function scrapePage($url): array {
         $crawler = $this->getCrawler($url);
-
-        $metaImage = $crawler->filter('meta[property="og:image"]')->eq(0)->attr('content');
+        try {
+            $metaImage = $crawler->filter('meta[property="og:image"]')->eq(0)->attr('content');
+        } catch (\Exception $e) {
+            // Image missing
+            $metaImage = '';
+        }
 
         return [
             'image' => $metaImage

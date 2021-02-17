@@ -15,7 +15,9 @@
         "guzzlehttp/guzzle": "^7.2",
         "http-interop/http-factory-guzzle": "^1.0",
         "fabpot/goutte": "^4.0",
-        "snuzi/awesome-blogs": "^1.0"
+        "snuzi/awesome-blogs": "^1.0",
+        "laminas/laminas-feed": "^2.13",
+        "laminas/laminas-http": "^2.14"
     },
     "autoload": {
         "psr-4": { "EngBlogs\\": "src/" }

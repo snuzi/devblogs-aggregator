@@ -4,27 +4,34 @@ namespace EngBlogs;
 use SimpleXMLElement;
 
 class XmlParser {
-    private SimpleXMLElement $simpleXMLElement;
+    private $feed;
     private Blog $blog;
     private $scraper;
 
-    function __construct(SimpleXMLElement $simpleXMLElement, Blog $blog) {
-        $this->simpleXMLElement = $simpleXMLElement;
+    function __construct($feed, Blog $blog) {
+        $this->feed = $feed;
         $this->blog = $blog;
 
         $this->scraper = new Scraper();
     }
 
-    private function parsePostItem($xmlItem): Post {
-        $title = (string) $xmlItem->title;
+    private function parsePostItem($feedEntry): Post {
+        $edata = [
+            'title'        => $feedEntry->getTitle(),
+            'description'  => $feedEntry->getDescription(),
+            'dateModified' => $feedEntry->getDateModified(),
+            'authors'      => $feedEntry->getAuthors(),
+            'link'         => $feedEntry->getLink(),
+            'content'      => $feedEntry->getContent(),
+        ];
+        $title = $feedEntry->getTitle();
         $categories = [];
-        $link = (string) $xmlItem->link;
-        $pubDate = $xmlItem->pubDate;
-        $description = strip_tags($xmlItem->description);
+        $link = $feedEntry->getLink();
+        $pubDate = $feedEntry->getDateModified()->format('Y-m-d H:i:s');
+        $description = $feedEntry->getDescription();
 
         if (!$description) {
-            $content = $xmlItem->children("content", true);
-            $description = (string) $content->encoded;
+            $description = $feedEntry->getContent();
         }
 
         $post = new Post();
@@ -43,8 +50,8 @@ class XmlParser {
 
     private function parseXml(): array {
         $posts = [];
-        foreach($this->simpleXMLElement->channel->item as $item){
-            $post = $this->parsePostItem($item);
+        foreach ($this->feed as $entry) {
+            $post = $this->parsePostItem($entry);
             $posts[] = $post->serialize();
         }
 
