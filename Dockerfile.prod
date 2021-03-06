@@ -6,8 +6,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 WORKDIR /var/eng-blogs
 
-COPY docker/cronjobs /etc/crontabs/root
-
 ADD src/ /var/eng-blogs/src/
 ADD ./composer.json /var/eng-blogs/
 
@@ -17,6 +15,11 @@ RUN composer install --prefer-dist --optimize-autoloader  && composer clear-cach
 RUN touch /var/log/cron.log
 
 # Setup cron job
-RUN (crontab -l ; echo "0 */3 * * * php /var/eng-blogs/src/bin/app rss:crawl") | crontab
-# RUN (crontab -l ; echo "* * * * * echo "Hello world" >> /var/log/cron.log") | crontab
+RUN (crontab -l; echo "* * * * * bash /var/eng-blogs/run-php-scripts.sh \n") | crontab
+
+ADD docker/run-php-scripts.sh /var/eng-blogs/run-php-scripts.sh
+
+ADD docker/start.sh /start.sh
+
+ENTRYPOINT ["/start.sh"]
 
