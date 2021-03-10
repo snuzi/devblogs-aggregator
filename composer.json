@@ -15,7 +15,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "http-interop/http-factory-guzzle": "^1.0",
         "fabpot/goutte": "^4.0",
-        "snuzi/awesome-blogs": "^1.0",
+        "snuzi/awesome-tech-blogs": "^1.0",
         "laminas/laminas-feed": "^2.13",
         "laminas/laminas-http": "^2.14",
         "wa72/url": "^0.7.1"
@@ -27,10 +27,10 @@
         {              
             "type": "package",
             "package": {
-              "name": "snuzi/awesome-blogs",
+              "name": "snuzi/awesome-tech-blogs",
               "version": "1.0.0",
               "source": {
-                "url": "https://github.com/snuzi/awesome-blogs.git",
+                "url": "https://github.com/snuzi/awesome-tech-blogs.git",
                 "type": "git",
                 "reference": "main"
               }
