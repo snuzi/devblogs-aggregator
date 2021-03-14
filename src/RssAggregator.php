@@ -17,6 +17,7 @@ class RssAggregator {
         $blogAggregator = new BlogRssAggregator();
         $blogsJson = $this->getBlogJsonUrls();
         foreach($blogsJson as $blogJson) {
+            $blogJson['type'] = Blog::TYPE_COMPANY;
             $blogAggregator->run($blogJson);
         }
     }

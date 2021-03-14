@@ -100,6 +100,7 @@ class Post {
             'publish_date' => $this->getPublishDate(),
             'update_timestamp' => time(),
             'blogName' => $this->getBlog() ? $this->getBlog()->getName() : '',
+            'blogType' => $this->getBlog() ? $this->getBlog()->getType() : '',
             'blogId' => $this->getBlog() ? $this->getBlog()->getId() : '',
             'blog' => $this->getBlog() ? $this->getBlog()->serialize() : [],
             'image' => $this->getImage()

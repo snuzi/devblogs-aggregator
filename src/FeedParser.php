@@ -15,7 +15,12 @@ class FeedParser {
 
     private function parsePostItem($feedEntry): Post {
         $title = $feedEntry->getTitle();
-        $categories = [];
+        $categories = array_unique(
+            $feedEntry->getCategories()->getValues()
+        );
+
+        $categories = $this->cleanUpCatgories($categories);
+        
         $link = $feedEntry->getLink();
         $pubDate = $feedEntry->getDateModified()->format('Y-m-d H:i:s');
         $description = $feedEntry->getDescription();
@@ -46,6 +51,10 @@ class FeedParser {
         }
 
         return $posts;
+    }
+
+    private function cleanUpCatgories($categories): array {
+        return preg_replace("/[^a-zA-Z 0-9]+/", "", $categories);
     }
 
     public function getPosts(): array {

@@ -2,10 +2,14 @@
 namespace EngBlogs;
 
 class Blog {
+    const TYPE_COMPANY = 'company';
+    const TYPE_INDIVIDUAL = 'individual';
+
     private string $name;
     private string $link;
     private string $id;
     private string $rssFeed;
+    private string $type;
 
     public function setLink(string $link) {
         $this->link = $link;
@@ -47,12 +51,23 @@ class Blog {
         return $this->rssFeed;
     }
 
+    public function setType(string $type) {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getType():string {
+        return $this->type;
+    }
+
     public function serialize(): array {
         return [
             'id' => $this->getId(),
             'link' => $this->getLink(),
             'name' => $this->getName(),
-            'rssFeed' => $this->getRssFeed()
+            'rssFeed' => $this->getRssFeed(),
+            'type' => $this->getType()
         ];
     }
 }

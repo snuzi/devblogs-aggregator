@@ -17,6 +17,7 @@
         "id",
         "title",
         "blogName",
+        "blogType",
         "description",
         "blog",
         "categories",
@@ -26,7 +27,9 @@
         "link"
     ],
     "attributesForFaceting": [
-        "blogName"
+        "blogName",
+        "categories",
+        "blogType"
     ],
     "stopWords": [
         "the",

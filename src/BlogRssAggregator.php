@@ -12,6 +12,7 @@ class BlogRssAggregator {
         $blog->setName($rssFeed['title'])
             ->setId($rssFeed['id'])
             ->setLink($rssFeed['blogUrl'])
+            ->setType($rssFeed['type'])
             ->setRssFeed($rssFeed['rssFeed']);
 
         $feed = Reader::import($blog->getRssFeed());
