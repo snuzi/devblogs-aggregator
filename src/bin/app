@@ -6,7 +6,6 @@ $app = new Symfony\Component\Console\Application('Aggregator Tools', '1.0.0');
 
 $app->add(new \EngBlogs\Commands\Sitemap());
 $app->add(new \EngBlogs\Commands\Rss());
-$app->add(new \EngBlogs\Commands\CreateIndex());
 $app->add(new \EngBlogs\Commands\UpdateIndexSettings());
 
 $app->run();

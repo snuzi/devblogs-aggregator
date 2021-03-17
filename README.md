@@ -24,10 +24,9 @@ $ docker run -it --rm -p 7700:7700 --network=engineering-blogs --name eng-blogs-
 ### Run a commands inside the aggregator container
 `docker exec -it eng-blogs-aggregator bash`
 
-#### Create index
-`php src/bin/app db:create-index`
-
 #### Update index settings
+This will create the index if not exists
+
 `php src/bin/app db:update-index-settings`
 
 #### Crawl rss feeds

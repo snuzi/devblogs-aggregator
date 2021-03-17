@@ -25,9 +25,8 @@ class MeiliSearch {
         return $this->client;
     }
 
-
     public function getIndex() {
-        return $this->getClient()->getIndex($this->indexName);
+        return $this->getClient()->index($this->indexName);
     }
 
     public function updateIndexSettings() {
@@ -35,18 +34,6 @@ class MeiliSearch {
         $settings = json_decode($string, true);
 
         $this->getIndex()->updateSettings($settings);
-    }
-
-    public function createIndex($primaryKey = 'id') {
-        try {
-            $indexer = $this->getClient()->createIndex($this->indexName, [
-                'primaryKey' => $primaryKey
-            ]);
-        } catch (\Exception $e) {
-            throw new \Exception('Index already exists');
-        }
-
-        return $this;
     }
 
     public function addDocuments(array $documents, $returnStatus = false) {
