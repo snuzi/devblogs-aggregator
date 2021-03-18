@@ -43,6 +43,18 @@ class MeiliSearch {
         }
     }
 
+    public function updateDocuments(array $documents) {
+        $this->getIndex()->updateDocuments($documents);
+    }
+
+    public function getDocuments(int $limit): array {
+        return $this->getIndex()->getDocuments(['limit' => $limit]);
+    }
+
+    public function getDocument(string $id): array {
+        return $this->getIndex()->getDocument($id);
+    }
+
     public function delete($documentsIds) {
         $this->getIndex()->deleteDocument($documentsIds);
     }

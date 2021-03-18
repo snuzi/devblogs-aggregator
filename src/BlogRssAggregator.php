@@ -17,7 +17,7 @@ class BlogRssAggregator {
 
         $feed = Reader::import($blog->getRssFeed());
 
-        $xmlParser = new FeedParser($feed, $blog);
+        $xmlParser = new FeedParser($feed, $blog, $meiliClient);
         $posts = $xmlParser->getPosts();
         $meiliClient->addDocuments($posts);
     }

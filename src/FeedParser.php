@@ -1,14 +1,18 @@
 <?php
 namespace EngBlogs;
 
+use EngBlogs\MeiliSearch\MeiliSearch;
+
 class FeedParser {
     private $feed;
     private Blog $blog;
     private $scraper;
+    private $meiliClient;
 
-    function __construct($feed, Blog $blog) {
+    function __construct($feed, Blog $blog, MeiliSearch $meiliClient) {
         $this->feed = $feed;
         $this->blog = $blog;
+        $this->meiliClient = $meiliClient;
 
         $this->scraper = new Scraper();
     }
@@ -20,7 +24,6 @@ class FeedParser {
         );
 
         $categories = $this->cleanUpCatgories($categories);
-        
         $link = $feedEntry->getLink();
         $pubDate = $feedEntry->getDateModified()->format('Y-m-d H:i:s');
         $description = $feedEntry->getDescription();
@@ -45,7 +48,14 @@ class FeedParser {
 
     private function parseFeed(): array {
         $posts = [];
+        
         foreach ($this->feed as $entry) {
+            $postId = md5($entry->getLink());
+            $documentIndexed = $this->getDocument($postId);
+            if ($documentIndexed !== null) { // Post already exists, skip indexing the rest of feed posts
+                break;
+            }
+
             $post = $this->parsePostItem($entry);
             $posts[] = $post->serialize();
         }
@@ -59,5 +69,9 @@ class FeedParser {
 
     public function getPosts(): array {
         return $this->parseFeed();
+    }
+
+    private function getDocument(string $id): ?array {
+        return $this->meiliClient->getDocument($id);
     }
 }

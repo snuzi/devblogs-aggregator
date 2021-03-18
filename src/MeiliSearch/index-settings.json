@@ -8,7 +8,6 @@
         "exactness",
         "desc(publish_timestamp)"
     ],
-    "distinctAttribute": "id",
     "searchableAttributes": [
         "title",
         "blogName"
