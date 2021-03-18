@@ -1,5 +1,5 @@
-# engineering-blogs-aggregator
-Engineering blogs aggregator
+# Engineering tech blogs aggregator
+This project is the aggregator of [Tech Engineering Blogs](https://github.com/snuzi/engineering-blogs-app)
 
 ## Contribute
 1. Add tech engineering blogs [awesome-tech-blogs](https://github.com/snuzi/awesome-tech-blogs)
@@ -13,13 +13,10 @@ Engineering blogs aggregator
 
 Copy `.env.example` to `.env`
 
-### Run MeiliSearch
-```
-$ docker run -it --rm -p 7700:7700 --network=engineering-blogs --name eng-blogs-meili -v data.ms:/data.ms getmeili/meilisearch
-```
 
-### Run image
+### Run
 `docker-compose up`
+
 
 ### Run a commands inside the aggregator container
 `docker exec -it eng-blogs-aggregator bash`
@@ -29,7 +26,7 @@ This will create the index if not exists
 
 `php src/bin/app db:update-index-settings`
 
-#### Crawl rss feeds
+#### Crawl RSS feeds
 `php src/bin/app rss:crawl`
 
 ## Production
