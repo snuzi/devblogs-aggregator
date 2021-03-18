@@ -1,5 +1,5 @@
-# Engineering tech blogs aggregator
-This project is the aggregator of [Tech Engineering Blogs](https://github.com/snuzi/engineering-blogs-app)
+# Engineering Tech Blogs Aggregator
+This project is the aggregator of [Engineering Tech Blogs](https://github.com/snuzi/engineering-blogs-app)
 
 ## Contribute
 1. Add tech engineering blogs [awesome-tech-blogs](https://github.com/snuzi/awesome-tech-blogs)
