@@ -2,12 +2,13 @@
 namespace EngBlogs\MeiliSearch;
 
 use MeiliSearch\Client;
+use MeiliSearch\Endpoints\Indexes;
 
 class MeiliSearch {
-    private $client;
-    private $host;
-    private $masterKey;
-    private $indexName;
+    private Client $client;
+    private string $host;
+    private string $masterKey;
+    private string $indexName;
 
     public function __construct(string $indexName) {
         $this->indexName = $indexName;
@@ -16,7 +17,7 @@ class MeiliSearch {
     }
 
     public function getClient(): Client {
-        if ($this->client) {
+        if (isset($this->client)) {
             return $this->client;
         }
 
@@ -25,22 +26,20 @@ class MeiliSearch {
         return $this->client;
     }
 
-    public function getIndex() {
+    public function getIndex(): Indexes {
         return $this->getClient()->index($this->indexName);
     }
 
-    public function updateIndexSettings() {
+    public function updateIndexSettings(): array {
         $string = file_get_contents(__DIR__ . '/index-settings.json');
         $settings = json_decode($string, true);
 
-        $this->getIndex()->updateSettings($settings);
+        return $this->getIndex()->updateSettings($settings);
     }
 
-    public function addDocuments(array $documents, $returnStatus = false) {
-        $updateItem = $this->getIndex()->addDocuments($documents);
-        if ($returnStatus) {
-            return $this->getIndex()->getUpdateStatus($updateItem['updateId']);
-        }
+    public function addDocuments(array $documents): array
+    {
+        return $this->getIndex()->addDocuments($documents);
     }
 
     public function updateDocuments(array $documents) {
@@ -55,7 +54,7 @@ class MeiliSearch {
         return $this->getIndex()->getDocument($id);
     }
 
-    public function delete($documentsIds) {
-        $this->getIndex()->deleteDocument($documentsIds);
+    public function delete($documentsIds): array {
+        return $this->getIndex()->deleteDocument($documentsIds);
     }
 }

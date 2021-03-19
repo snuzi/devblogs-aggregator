@@ -9,7 +9,7 @@ use Laminas\Feed\Reader\Feed\FeedInterface;
 class FeedParser {
     private FeedInterface $feed;
     private Blog $blog;
-    private $scraper;
+    private Scraper $scraper;
     private MeiliSearch $meiliClient;
 
     function __construct(FeedInterface $feed, Blog $blog, MeiliSearch $meiliClient) {
