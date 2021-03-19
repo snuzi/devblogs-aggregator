@@ -2,14 +2,17 @@
 namespace EngBlogs;
 
 use EngBlogs\MeiliSearch\MeiliSearch;
+use EngBlogs\Models\Blog;
+use EngBlogs\Models\Post;
+use Laminas\Feed\Reader\Feed\FeedInterface;
 
 class FeedParser {
-    private $feed;
+    private FeedInterface $feed;
     private Blog $blog;
     private $scraper;
-    private $meiliClient;
+    private MeiliSearch $meiliClient;
 
-    function __construct($feed, Blog $blog, MeiliSearch $meiliClient) {
+    function __construct(FeedInterface $feed, Blog $blog, MeiliSearch $meiliClient) {
         $this->feed = $feed;
         $this->blog = $blog;
         $this->meiliClient = $meiliClient;
@@ -72,6 +75,13 @@ class FeedParser {
     }
 
     private function getDocument(string $id): ?array {
-        return $this->meiliClient->getDocument($id);
+        $document = null;
+        try {
+            $document = $this->meiliClient->getDocument($id);
+        } catch (\Exception $exception) {
+
+        }
+
+        return $document;
     }
 }

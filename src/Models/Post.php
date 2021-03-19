@@ -1,17 +1,16 @@
 <?php
-namespace EngBlogs;
+namespace EngBlogs\Models;
 
 class Post {
     private string $link;
     private string $title;
-    private string $blogName;
     private string $description;
     private string $publishDate;
     private array $categories;
     private string $image;
     private Blog $blog;
 
-    public function setLink(string $link) {
+    public function setLink(string $link): Post {
         $this->link = $link;
 
         return $this;
@@ -21,7 +20,7 @@ class Post {
         return $this->link;
     }
 
-    public function setImage(string $image) {
+    public function setImage(string $image): Post {
         $this->image = $image;
 
         return $this;
@@ -31,7 +30,7 @@ class Post {
         return $this->image;
     }
 
-    public function setBlog(Blog $blog) {
+    public function setBlog(Blog $blog): Post {
         $this->blog = $blog;
 
         return $this;
@@ -41,17 +40,17 @@ class Post {
         return $this->blog;
     }
 
-    public function setTitle(string $title) {
+    public function setTitle(string $title): Post {
         $this->title = $title;
 
         return $this;
     }
 
-    public function getTitle():string {
+    public function getTitle() :string {
         return $this->title;
     }
 
-    public function setCategories(array $categories) {
+    public function setCategories(array $categories): Post {
         $this->categories = $categories;
 
         return $this;
@@ -61,7 +60,7 @@ class Post {
         return $this->categories;
     }
 
-    public function setDescription(string $description) {
+    public function setDescription(string $description): Post {
         $this->description = $description;
 
         return $this;
@@ -71,7 +70,7 @@ class Post {
         return $this->description;
     }
 
-    public function setPublishDate(string $date) {
+    public function setPublishDate(string $date): Post {
         $this->publishDate = $date;
         
         return $this;

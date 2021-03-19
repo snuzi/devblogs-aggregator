@@ -2,6 +2,7 @@
 namespace EngBlogs;
 
 use EngBlogs\MeiliSearch\MeiliSearch;
+use EngBlogs\Models\Blog;
 use Laminas\Feed\Reader\Reader;
 
 class BlogRssAggregator {
@@ -13,6 +14,8 @@ class BlogRssAggregator {
             ->setId($rssFeed['id'])
             ->setLink($rssFeed['blogUrl'])
             ->setType($rssFeed['type'])
+            ->setGithubUsername($rssFeed['githubUsername'])
+            ->setImage($rssFeed['image'])
             ->setRssFeed($rssFeed['rssFeed']);
 
         $feed = Reader::import($blog->getRssFeed());

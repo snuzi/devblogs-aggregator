@@ -1,6 +1,8 @@
 <?php
 namespace EngBlogs;
 
+use EngBlogs\Models\Blog;
+
 class RssAggregator {
     public function getBlogJsonUrls(): array {
         $blogsString = file_get_contents(getenv('RSS_FEEDS'));
