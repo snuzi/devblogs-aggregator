@@ -1,10 +1,10 @@
-# Engineering Tech Blogs Aggregator
-This project is the aggregator of [Engineering Tech Blogs](https://github.com/snuzi/engineering-blogs-app)
+#  Developer Blogs Aggregator
+This project is the aggregator of [devblogs.net](https://github.com/snuzi/devblogs)
 
 ## Contribute
-1. Add tech engineering blogs [awesome-tech-blogs](https://github.com/snuzi/awesome-tech-blogs)
+1. Add your dev blog [awesome-dev-blogs](https://github.com/snuzi/awesome-dev-blogs)
 
-2. Frontend application [engineering-blogs-app](https://github.com/snuzi/engineering-blogs-app)
+2. Frontend application [devblogs.net](https://github.com/snuzi/devblogs)
 
 3. Blog aggregator [engineering-blogs-aggregator](https://github.com/snuzi/engineering-blogs-aggregator)
 
