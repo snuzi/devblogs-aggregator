@@ -22,6 +22,9 @@ class BlogRssAggregator {
 
         $xmlParser = new FeedParser($feed, $blog, $meiliClient);
         $posts = $xmlParser->getPosts();
+
+        printf("Crawling %s, %d docs to be indexed \n", $blog->getName(), count($posts));
+
         $meiliClient->addDocuments($posts);
     }
 }
