@@ -11,12 +11,14 @@ class BlogRssAggregator {
 
         $blog = new Blog();
         $blog->setName($rssFeed['title'])
-            ->setId($rssFeed['id'])
             ->setLink($rssFeed['blogUrl'])
             ->setType($rssFeed['type'])
             ->setGithubUsername($rssFeed['githubUsername'])
-            ->setImage($rssFeed['image'])
             ->setRssFeed($rssFeed['rssFeed']);
+
+        if (!empty($rssFeed['image'])) {
+            $blog->setImage($rssFeed['image']);
+        }
 
         $feed = Reader::import($blog->getRssFeed());
 

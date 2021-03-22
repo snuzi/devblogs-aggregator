@@ -7,10 +7,9 @@ class Blog {
 
     private string $name;
     private string $link;
-    private string $id;
     private string $rssFeed;
     private string $type;
-    private string $image;
+    private string $image = '';
     private string $githubUsername;
 
     public function setLink(string $link): Blog {
@@ -31,16 +30,6 @@ class Blog {
 
     public function getName():string {
         return $this->name;
-    }
-
-    public function setId(string $id): Blog {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    public function getId() :string {
-        return $this->id;
     }
 
     public function setRssFeed(string $feed): Blog {
@@ -84,14 +73,18 @@ class Blog {
     }
 
     public function serialize(): array {
-        return [
-            'id' => $this->getId(),
+        $object = [
             'link' => $this->getLink(),
-            'image' => $this->getImage(),
             'githubUsername' => $this->getGithubUsername(),
             'name' => $this->getName(),
             'rssFeed' => $this->getRssFeed(),
             'type' => $this->getType()
         ];
+
+        if (!empty($this->getImage())) {
+            $object['image'] = $this->getImage();
+        }
+
+        return $object;
     }
 }
