@@ -18,7 +18,7 @@ Copy `.env.example` to `.env`
 `docker-compose up`
 
 
-### Run a commands inside the aggregator container
+### Available commands inside the aggregator container
 `docker exec -it eng-blogs-aggregator bash`
 
 #### Update index settings
