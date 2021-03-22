@@ -26,7 +26,7 @@ class FeedParser {
             $feedEntry->getCategories()->getValues()
         );
 
-        $categories = $this->cleanUpCatgories($categories);
+        $categories = $this->cleanUpCatgories($categories, $this->blog->getName());
         $link = $feedEntry->getLink();
         $pubDate = $feedEntry->getDateModified()->format('Y-m-d H:i:s');
         $description = $feedEntry->getDescription();
@@ -66,8 +66,17 @@ class FeedParser {
         return $posts;
     }
 
-    private function cleanUpCatgories($categories): array {
-        return preg_replace("/[^a-zA-Z 0-9]+/", "", $categories);
+    private function cleanUpCatgories($categories, $blogName): array {
+        $categories = preg_replace("/[^a-zA-Z 0-9]+/", "", $categories);
+
+        $filteredCategories = [];
+        foreach($categories as $cat) {
+            if (!str_contains(strtolower($blogName), strtolower($cat))) {
+                $filteredCategories[] = $cat;
+            }
+        }
+
+        return $filteredCategories;
     }
 
     public function getPosts(): array {
