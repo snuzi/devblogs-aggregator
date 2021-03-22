@@ -71,7 +71,7 @@ class FeedParser {
 
         $filteredCategories = [];
         foreach($categories as $cat) {
-            if (!str_contains(strtolower($blogName), strtolower($cat))) {
+            if (!str_contains(strtolower($cat), strtolower($blogName))) {
                 $filteredCategories[] = $cat;
             }
         }

@@ -25,24 +25,23 @@ class UpdateIndexDocs extends Command {
 
             $blog = new Blog();
             $blog->setName($rssFeed['title'])
-                ->setId($rssFeed['id'])
                 ->setLink($rssFeed['blogUrl'])
                 ->setType($rssFeed['type'])
                 ->setGithubUsername($rssFeed['githubUsername'])
-                ->setImage($rssFeed['image'])
                 ->setRssFeed($rssFeed['rssFeed']);
 
-            $blogs[$rssFeed['id']] = $blog;
+            $blogs[$rssFeed['blogUrl']] = $blog;
         }
 
         $documents = $meiliClient->getDocuments(1000);
 
         $docsToUpdate = [];
         foreach($documents as $document) {
+
             $docsToUpdate[] = [
                 'id' => $document['id'],
                 'post_id' => md5($document['link']),
-                'blog' => $blogs[$document['blog']['id']]->serialize()
+                'blog' => $blogs[$document['blog']['link']]->serialize()
             ];
         }
 
