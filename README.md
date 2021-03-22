@@ -6,7 +6,7 @@ This project is the aggregator of [devblogs.net](https://github.com/snuzi/devblo
 
 2. Frontend application [devblogs.net](https://github.com/snuzi/devblogs)
 
-3. Blog aggregator [engineering-blogs-aggregator](https://github.com/snuzi/engineering-blogs-aggregator)
+3. Blog aggregator [devblogs-aggregator](https://github.com/snuzi/devblogs-aggregator)
 
 
 ## Development
