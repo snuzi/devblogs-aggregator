@@ -12,7 +12,7 @@ jobs:
       - uses: mr-smithers-excellent/docker-build-push@v3
         name: Build & push Docker image
         with:
-          image : snuzi/engineering-blogs-aggregator
+          image : snuzi/devblogs-aggregator
           tag: main
           registry: docker.io
           dockerfile: Dockerfile.prod
