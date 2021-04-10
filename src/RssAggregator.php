@@ -5,20 +5,36 @@ use EngBlogs\Models\Blog;
 
 class RssAggregator {
     public static function getBlogJsonUrls(): array {
-        $blogsString = file_get_contents(getenv('RSS_FEEDS'));
-        if (!$blogsString) {
-            $blogsString = file_get_contents(__DIR__ . '/../vendor/snuzi/awesome-blogs/engineering-tech-blogs.json');
+        $companyBlogsFeedStr = file_get_contents(getenv('RSS_COMPANY_FEEDS'));
+        $individualBlogsFeedStr = file_get_contents(getenv('RSS_INDIVIDUAL_FEEDS'));
+
+        $blogs = [];
+        if ($companyBlogsFeedStr) {
+            $blogs[] = [
+                'type' => Blog::TYPE_COMPANY,
+                'feed' => json_decode($companyBlogsFeedStr, true)
+            ];
         }
 
-        return json_decode($blogsString, true);
+        if ($individualBlogsFeedStr) {
+            $blogs[] = [
+                'type' => Blog::TYPE_INDIVIDUAL,
+                'feed' => json_decode($individualBlogsFeedStr, true)
+            ];
+        }
+        return $blogs;
     }
 
     public function run() {
         $blogAggregator = new BlogRssAggregator();
-        $blogsJson = self::getBlogJsonUrls();
-        foreach($blogsJson as $blogJson) {
-            $blogJson['type'] = Blog::TYPE_COMPANY;
-            $blogAggregator->run($blogJson);
+
+        $blogsFeeds = self::getBlogJsonUrls();
+        foreach ($blogsFeeds as $blogsJson) {
+            printf("Aggregating blogs for type: %s \n", $blogsJson['type']);
+            foreach($blogsJson['feed'] as $blogJson) {
+                $blogJson['type'] = $blogsJson['type'];
+                $blogAggregator->run($blogJson);
+            }
         }
     }
 }

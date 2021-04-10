@@ -32,7 +32,6 @@ class BlogRssAggregator {
             printf("%d documents indexed \n", count($posts));
 
         } catch (\Exception $e) {
-            var_dump($e);
             printf("Failed, message: \n", $e->getMessage());
         }
     }
