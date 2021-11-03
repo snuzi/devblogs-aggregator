@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5472ab319c0c00c0c1617ff6a279d24c",
+    "content-hash": "9c077db99a5e64d50a5a3305426599c0",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -958,30 +958,35 @@
         },
         {
             "name": "meilisearch/meilisearch-php",
-            "version": "v0.16.0",
+            "version": "v0.19.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/meilisearch/meilisearch-php.git",
-                "reference": "e96b639b22c3a5dfc4a977287ad775867f5b36d6"
+                "reference": "5d95c290c33bc1e76dc80028f3e5a0d89c4346a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/meilisearch/meilisearch-php/zipball/e96b639b22c3a5dfc4a977287ad775867f5b36d6",
-                "reference": "e96b639b22c3a5dfc4a977287ad775867f5b36d6",
+                "url": "https://api.github.com/repos/meilisearch/meilisearch-php/zipball/5d95c290c33bc1e76dc80028f3e5a0d89c4346a1",
+                "reference": "5d95c290c33bc1e76dc80028f3e5a0d89c4346a1",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "php": ">=7.2",
+                "php": "^7.3 || ^8.0",
                 "php-http/client-common": "^2.0",
                 "php-http/discovery": "^1.7",
                 "php-http/httplug": "^2.1"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.16",
+                "friendsofphp/php-cs-fixer": "^3.0",
                 "guzzlehttp/guzzle": "^7.1",
                 "http-interop/http-factory-guzzle": "^1.0",
-                "phpunit/phpunit": "^8.5 || ^9.0"
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan": "^0.12.87",
+                "phpstan/phpstan-deprecation-rules": "^0.12.6",
+                "phpstan/phpstan-phpunit": "^0.12.19",
+                "phpstan/phpstan-strict-rules": "^0.12.9",
+                "phpunit/phpunit": "^9.5"
             },
             "suggest": {
                 "guzzlehttp/guzzle": "Use Guzzle ^7 as HTTP client",
@@ -1012,7 +1017,7 @@
                 "php",
                 "search"
             ],
-            "time": "2021-01-21T15:58:31+00:00"
+            "time": "2021-10-12T13:04:12+00:00"
         },
         {
             "name": "php-http/client-common",
@@ -1739,6 +1744,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/snuzi/awesome-blogs.git",
+                "reference": "main"
+            },
+            "type": "library"
+        },
+        {
+            "name": "snuzi/awesome-tech-blogs",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/snuzi/awesome-tech-blogs.git",
                 "reference": "main"
             },
             "type": "library"

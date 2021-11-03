@@ -10,7 +10,7 @@
     ],
     "require": {
         "symfony/console": "^5.2",
-        "meilisearch/meilisearch-php": "^0.16.0",
+        "meilisearch/meilisearch-php": "0.19.2",
         "vlucas/phpdotenv": "^5.3",
         "guzzlehttp/guzzle": "^7.2",
         "http-interop/http-factory-guzzle": "^1.0",
