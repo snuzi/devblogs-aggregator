@@ -1,17 +1,4 @@
 {
-    "rankingRules": [
-        "typo",
-        "words",
-        "proximity",
-        "attribute",
-        "wordsPosition",
-        "exactness",
-        "desc(publish_timestamp)"
-    ],
-    "searchableAttributes": [
-        "title",
-        "blogName"
-    ],
     "displayedAttributes": [
         "id",
         "title",
@@ -25,15 +12,41 @@
         "image",
         "link"
     ],
+    "searchableAttributes": [
+        "title",
+        "blogName"
+    ],
     "filterableAttributes": [
         "blogName",
         "categories",
         "blogType"
     ],
+    "sortableAttributes":[
+       "publish_timestamp"
+    ],
+    "rankingRules": [
+        "words",
+        "typo",
+        "proximity",
+        "attribute",
+        "sort",
+        "exactness",
+        "publish_timestamp:desc"
+    ],
+    "synonyms":{
+        "meta": [
+            "facebook"
+        ],
+        "facebook": [
+            "meta"
+        ]
+    },
     "stopWords": [
         "the",
         "a",
         "an",
         "to"
-    ]
-}
+    ],
+    "distinctAttribute":null
+ }
+ 
