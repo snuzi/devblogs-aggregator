@@ -32,7 +32,7 @@ class BlogRssAggregator {
             printf("%d documents indexed \n", count($posts));
 
         } catch (\Exception $e) {
-            printf("Failed, message: \n", $e->getMessage());
+            printf("Failed, message: %s \n", $e->getMessage());
         }
     }
 }
