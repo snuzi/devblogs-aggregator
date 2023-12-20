@@ -40,6 +40,10 @@ class Scraper {
      * @return string
      */
     private function getAbsoluteUrl($baseUrl, $imageUrl): string {
+        if (!$imageUrl) {
+            return '';
+        }
+
         if (str_starts_with($imageUrl, 'http')) {
             return $imageUrl;
         }

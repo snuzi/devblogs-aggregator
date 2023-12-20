@@ -31,6 +31,9 @@ class BlogRssAggregator {
             $meiliClient->addDocuments($posts);
             printf("%d documents indexed \n", count($posts));
 
+        } catch (\Error $t) {
+            // Executed only in PHP 7, will not match in PHP 5
+            printf("Failed, message: %s \n", $t->getMessage());
         } catch (\Exception $e) {
             printf("Failed, message: %s \n", $e->getMessage());
         }
