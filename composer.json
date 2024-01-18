@@ -4,8 +4,7 @@
     "type": "project",
     "authors": [
         {
-            "name": "snuzi",
-            "email": "sabrinuzi@gmail.com"
+            "name": "snuzi"
         }
     ],
     "require": {
